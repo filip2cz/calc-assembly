@@ -8,15 +8,8 @@ _start:
     // set output
     lea rsi, [output]  
     // lenght of output
-    mov rdx, 8
+    mov rdx, 13
     syscall
-
-    // set numbers
-    mov al, 5
-    mov bl, 3
-
-    // sum numbers
-    add al, bl
     
     // sys_exit
     mov rax, 60
@@ -24,4 +17,4 @@ _start:
     syscall
 
 output:
-    .asciz "output:\n"
+    .asciz "Hello World!\n"
