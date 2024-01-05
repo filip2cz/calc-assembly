@@ -1,27 +1,22 @@
-.global _start
-.intel_syntax noprefix
+section .data
+    msg db "Output:", 0ah
+
+section .text
+    global _start ; nějaký systémový věci, co tam prostě musej být kvůli tomu textovému výstupu
 
 _start:
-    // write number output
-    mov rax, 1
-    mov rdi, 1
-    // set output
-    lea rsi, [output]  
-    // lenght of output
-    mov rdx, 8
-    syscall
+    mov rax, 1 ; rax = 1
+    mov rcx, 4 ; rcx = 4
+    mov rdx = 2 ; rdx = 2
 
-    // set numbers
-    mov al, 5
-    mov bl, 3
-
-    // sum numbers
-    add al, bl
+    add rax, rcx
+    sub rax, rdx
     
-    // sys_exit
-    mov rax, 60
-    mov rdi, 69
+    mov rdi, 1 ; nastaví exit code
+    
+    mov rsi, rax ; rsi = rax, 
+    mov rdx, 8 ; délka stringu msg
     syscall
-
-output:
-    .asciz "output:\n"
+    mov rax, 60 ; rax = 60
+    mov rdi, 0 ; nastaví exit code
+    syscall
